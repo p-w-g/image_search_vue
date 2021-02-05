@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import { createApi } from 'unsplash-js'
 
 const key = process.env.VUE_APP_UNSPLASH_ACCESS_KEY;
-console.log("key: ", key)
+
 const unsplash = createApi({
   accessKey: key
 })
