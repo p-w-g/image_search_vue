@@ -66,6 +66,8 @@ export default new Vuex.Store({
         .getPhotos({ query: query })
         .then((result) => {
           context.commit('searchResults', result.response.results)
+        })
+        .then(() => {
           context.commit('loaded')
         })
         .catch((e) => {
@@ -81,8 +83,14 @@ export default new Vuex.Store({
         .get({ photoId: picId })
         .then(result => {
           context.commit('modalPhoto', result.response)
+        })
+        .then(() => {
           context.commit('loadedModal')
         })
+        // TODO: implement custom modal to open after its loaded
+        // .then(() => {
+          // context.commit('openModal')
+        // })
         .catch((e) => {
           throw (e)
         });

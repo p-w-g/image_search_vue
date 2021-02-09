@@ -18,6 +18,7 @@
       />
     </div>
     <div v-if="isModalVisible">
+      <!-- TODO: when implementing custom modal, rely on vuex prop instead of event listener (@shutdownTheModal) -->
       <modal-card
         :toggle-show="isModalVisible"
         :item="item"

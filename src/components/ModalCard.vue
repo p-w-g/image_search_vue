@@ -1,5 +1,6 @@
 <template>
   <div class="modal">
+    <!-- TODO: implement custom modal, instead on toggleshow use vuex prop -->
     <md-dialog
       :md-active.sync="toggleShow"
       :md-close-on-esc="false"
@@ -8,14 +9,18 @@
       <md-dialog-title>
         {{ item.user.name }} <br />
         {{
-          modalPhoto.location.city && !isLoadingModal && modalPhoto != undefined
+          modalPhoto.location.city &&
+          !isLoadingModal &&
+          modalPhoto != undefined &&
+          modalPhoto !== ''
             ? modalPhoto.location.city
             : 'City N/A'
         }},
         {{
           modalPhoto.location.country &&
           !isLoadingModal &&
-          modalPhoto != undefined
+          modalPhoto != undefined &&
+          modalPhoto !== ''
             ? modalPhoto.location.country
             : 'Country N/A'
         }}
@@ -60,9 +65,14 @@ export default {
   },
   methods: {
     modalInnerHide() {
+      // TODO: pass action to vuex instead, and remove the event listener in parent
       this.$emit('shutdown-the-modal')
     }
   },
+  // TODO: implement custom modal on separate prop based on vuex
+  // mounted() {
+  //   console.log('is modalPhoto loaded?', this.modalPhoto)
+  // },
   computed: {
     isLoadingModal() {
       return this.$store.getters.isLoadingModal
